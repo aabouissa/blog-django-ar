@@ -1,6 +1,6 @@
-bin/
-include/
-lib/
+bin/*
+include/*
+lib/*
 *.pyc
 .directory
 
