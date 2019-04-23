@@ -1,0 +1,7 @@
+<ul class="list-group-flush latest-post">
+    {% for post in l_posts %}
+    <li class="list-group-item latest-post-item">
+        <a class="text-dark" href="{% url 'detail' post.id %}">{{post.title}}</a>
+    </li>
+    {% endfor %}
+</ul>
