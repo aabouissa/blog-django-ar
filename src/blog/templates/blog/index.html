@@ -1,5 +1,12 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
 {% for post in posts %}
 <div class="border p-3 mb-3">
     <img class="img-fluid rounded-circle border m-2" width="70px"
