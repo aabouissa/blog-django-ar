@@ -128,3 +128,4 @@ STATIC_URL = '/static/'
 #     '/home/abouissa/Desktop/myprojects/2019/Blogger/src/static',
 # ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'home'
