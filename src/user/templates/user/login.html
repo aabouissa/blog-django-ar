@@ -1,6 +1,5 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-
 <div class="border p-4 mb-5">
     <legend class="border-bottom pb-1 mb-3">تسجيل الدخول</legend>
     {% if messages %}
@@ -14,11 +13,11 @@
         {% csrf_token %}
         <div class="form-group">
             <label for="username">اسم المستخدم</label>
-            <input type="text" name="username" id="username" placeholder="قم بكتابة اسم المستخدم" class="form-control">
+            <input type="text" name="username" id="username" class="form-control" placeholder="قم بكتابة اسم المستخدم">
         </div>
         <div class="form-group">
-            <label for="username">كلمة المرور</label>
-            <input type="password" name="password" id="password" placeholder="كلمة المرور" class="form-control">
+            <label for="password">كلمة المرور</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="كلمة المرور">
         </div>
         <input class="btn btn-secondary mt-4" type="submit" value="تسجيل الدخول">
     </form>
