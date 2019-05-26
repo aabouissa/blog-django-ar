@@ -11,9 +11,10 @@
             </div>
         </div>
         <div class="col-md-9">
-            <h2 class="mb-4">اسم المستخدم</h2>
-            <p class="font-weight-bold">الاسم: <span class="font-weight-normal">أحمد أبو عيسى</span></p>
-            <p class="font-weight-bold">البريد الإلكتروني: <span class="font-weight-normal">email@email.com</span></p>
+            <h2 class="mb-4">{{user.username}}</h2>
+            <p class="font-weight-bold">الاسم: <span class="font-weight-normal">{{user.first_name}}
+                    {{user.last_name}}</span></p>
+            <p class="font-weight-bold">البريد الإلكتروني: <span class="font-weight-normal">{{user.email}}</span></p>
         </div>
     </div>
 </div>
@@ -22,34 +23,25 @@
     <div class="col-md">
         <h3 class="border-bottom pb-3 mb-4">عدد التدوينات التي دونتها</h3>
         <h4 class="bg-secondary text-center p-4 text-light">
-            40
+            {{posts.count}}
         </h4>
 
         <h3 class="border-bottom mb-4 pb-3 mt-5">تدويناتي</h3>
+        {% for post in posts %}
         <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
+            <a class="text-dark" href="{% url 'detail' post.id %}">{{post.title}}</a>
         </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
-        <ul class="pr-2">
-            <a class="text-dark" href="#">عنوان التدوينة</a>
-        </ul>
+        {% empty %}
+        <h4 class="text-center mb-5">لا يوجد تدوينات</h4>
+        {% endfor %}
 
+        {% if posts.count >= 10 %}
         <div class="border-top pt-3 mt-4 text-center">
             <a class="btn btn-secondary bg-secondary" href="#">التالي</a>
             <span class="pr-4 pl-4">صفحة 1 من 10</span>
             <a class="btn btn-secondary bg-secondary" href="#">السابق</a>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
