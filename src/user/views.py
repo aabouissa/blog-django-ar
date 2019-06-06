@@ -3,6 +3,7 @@ from .forms import UserCreationForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from blog.models import Post
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -17,7 +18,7 @@ def register(request):
             #    request, 'تهانينا {} لقد تمت عملية التسجيل بنجاح.'.format(username))
             messages.success(
                 request, f'تهانينا {new_user} لقد تمت عملية التسجيل بنجاح.')
-            return redirect('home')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(request, 'user/register.html', {
@@ -33,7 +34,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('profile')
         else:
             messages.warning(
                 request, 'هناك خطأ في اسم المستخدم أو كلمة المرور.')
@@ -50,6 +51,7 @@ def logout_user(request):
     })
 
 
+@login_required(login_url='login')
 def profile(request):
     posts = Post.objects.filter(author=request.user)
     return render(request, 'user/profile.html', {
