@@ -26,7 +26,7 @@
         </h4>
 
         <h3 class="border-bottom mb-4 pb-3 mt-5">تدويناتي</h3>
-        {% for post in posts %}
+        {% for post in post_list %}
         <ul class="pr-2">
             <a class="text-dark" href="{% url 'detail' post.id %}">{{post.title}}</a>
         </ul>
@@ -34,13 +34,7 @@
         <h4 class="text-center mb-5">لا يوجد تدوينات</h4>
         {% endfor %}
 
-        {% if posts.count >= 10 %}
-        <div class="border-top pt-3 mt-4 text-center">
-            <a class="btn btn-secondary bg-secondary" href="#">التالي</a>
-            <span class="pr-4 pl-4">صفحة 1 من 10</span>
-            <a class="btn btn-secondary bg-secondary" href="#">السابق</a>
-        </div>
-        {% endif %}
+        {% include 'blog/pagination.html' with page=post_list %}
     </div>
 </div>
 {% endblock content %}
