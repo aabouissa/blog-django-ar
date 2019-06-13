@@ -1,12 +1,22 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="border p-4 mb-5">
     <div class="row">
         <div class="col-md-3 text-center">
             <img class="img-fluid rounded-circle border m-2" style="width: 120px; height:120px;"
-                src="{{user.profile.image.url}}" alt="صورة الناشر">
+                src="{{user.profile.image.url}}" alt="{{user.username}}">
             <div class="mt-3">
-                <a class="btn btn-secondary bg-secondary" href="#"><i class="fas fa-pen fa-xs"></i> تحرير</a>
+                <a class="btn btn-secondary bg-secondary" href="{% url 'profile_update' %}"><i
+                        class="fas fa-pen fa-xs"></i> تحرير</a>
             </div>
         </div>
         <div class="col-md-9">
