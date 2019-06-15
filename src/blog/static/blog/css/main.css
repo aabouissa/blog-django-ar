@@ -51,3 +51,7 @@ body{
     border: 1px dashed #CCC;
 }
 /* End Comment */
+
+.btn-editing{
+    float: left;
+}
