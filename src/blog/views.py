@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Comment
 from .forms import NewComment, PostCreateForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
@@ -66,16 +66,27 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = Post
-    template_name = 'blog/new_post.html'
+    template_name = 'blog/post_update.html'
     form_class = PostCreateForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
+
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
             return True
         else:
             return False
+
+
+class PostDeleteView(UserPassesTestMixin, LoginRequiredMixin, DeleteView):
+    model = Post
+    success_url = '/'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
