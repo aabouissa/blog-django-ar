@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Django==2.2.10
+||||||| merged common ancestors
+Django==2.2.2
+=======
+Django==2.2.8
+>>>>>>> ca4628f45a1c3b526c8e166c4b961cfc1687c2ce
 django-crispy-forms==1.7.2
 Pillow==7.1.2
 pytz==2020.1
