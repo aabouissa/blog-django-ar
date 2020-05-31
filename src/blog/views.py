@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from .forms import NewComment, PostCreateForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -39,7 +39,9 @@ def post_detail(request, post_id):
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
             new_comment.save()
-            comment_form = NewComment()
+            # Deprecated line to prevent form to post data when refresh a page
+            # comment_form = NewComment()
+            return redirect('detail', post_id)
     else:
         comment_form = NewComment()
 
