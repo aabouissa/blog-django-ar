@@ -1,6 +1,6 @@
 defusedxml==0.6.0
 diff-match-patch==20181111
-Django==2.2.10
+Django==2.2.18
 django-crispy-forms==1.7.2
 django-import-export==2.1.0
 et-xmlfile==1.0.1
@@ -11,7 +11,7 @@ odfpy==1.4.1
 openpyxl==3.0.3
 Pillow==8.1.1
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 sqlparse==0.3.1
 tablib==2.0.0
 xlrd==1.2.0
